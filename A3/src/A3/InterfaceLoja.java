@@ -39,65 +39,138 @@ public class InterfaceLoja {
 				break;
 				
 			case 2:    // Opção alterar produto.
-				System.out.print("Digite o nome do produto a ser alterado: ");
-				String nomeAlterar = scanner.nextLine();
-				Produto novoProduto = new Produto("", "", 0, 0, "");
-				System.out.print("Digite o novo nome do produto: ");
-				novoProduto.setNome(scanner.nextLine()); // metodo alterando nome.
-				System.out.print("Digite a nova marca do produto: ");
-				novoProduto.setMarca(scanner.nextLine());// metodo alterando marca.
-				System.out.print("Digite o novo preÃ§o do produto: ");
-				novoProduto.setPreco(scanner.nextDouble());// metodo alterando preco.
-				System.out.print("Digite a nova quantidade do produto: ");
-				novoProduto.setQuantidade(scanner.nextInt());// metodo alterando quantidade.
-				scanner.nextLine(); 
-				System.out.print("Digite a nova categoria do produto: ");
-				novoProduto.setCategoria(scanner.nextLine());  // metodo alterando categoria.
-				loja.alterarProduto(nomeAlterar, novoProduto);// metodo de produto na loja.
-				break;
-			case 3:
-                System.out.println("1 - Consultar por nome");
-                System.out.println("2 - Consultar por ID");
-                System.out.print("Escolha uma opção: ");
-                int opcaoConsulta = scanner.nextInt();
-                scanner.nextLine();
+				 System.out.print("Digite o ID do produto a ser alterado: ");
+				    int idAlterar = scanner.nextInt();
+				    scanner.nextLine();
 
-                switch (opcaoConsulta) {
-                case 1:
-                    System.out.print("Digite o nome do produto a ser consultado: ");
-                    String nomeConsultar = scanner.nextLine();
-                    List<Produto> produtosEncontrados = loja.consultarProduto(nomeConsultar);
-                    if (!produtosEncontrados.isEmpty()) {
-                        System.out.println("Produtos encontrados:");
-                        for (Produto produto1 : produtosEncontrados) {
-                            System.out.println(produto1);
-                        }
-                    } else {
-                        System.out.println("Nenhum produto encontrado com o nome informado!");
-                    }
-                    break;
-                    case 2:
-                        System.out.print("Digite o ID do produto a ser consultado: ");
-                        int idConsultar = scanner.nextInt();
-                        scanner.nextLine();
-                        Produto produtoConsultadoPorId = loja.consultarProduto(idConsultar);
-                        if (produtoConsultadoPorId != null) {
-                            System.out.println(produtoConsultadoPorId);
-                        } else {
-                            System.out.println("Produto não encontrado!");
-                        }
-                        break;
-                    default:
-                        System.out.println("Opção inválida para a consulta!");
-                        break;
-                       }
-                break;
-                
+				    Produto produtoExistente = loja.consultarProduto(idAlterar);
+				    if (produtoExistente != null) {
+				        System.out.println("Produto encontrado:");
+				        System.out.println(produtoExistente);
+
+				        boolean sair = false;
+				        while (!sair) {
+				            System.out.println("\nOpções de alteração:");
+				            System.out.println("1 - Alterar nome");
+				            System.out.println("2 - Alterar marca");
+				            System.out.println("3 - Alterar preço");
+				            System.out.println("4 - Alterar quantidade");
+				            System.out.println("5 - Alterar categoria");
+				            System.out.println("0 - Sair");
+				            System.out.print("Escolha uma opção: ");
+				            int opcaoAlteracao = scanner.nextInt();
+				            scanner.nextLine();
+
+				            switch (opcaoAlteracao) {
+				                case 0:
+				                    sair = true;
+				                    break;
+				                case 1:
+				                    System.out.print("Digite o novo nome do produto: ");
+				                    String novoNome = scanner.nextLine();
+				                    produtoExistente.setNome(novoNome);
+				                    break;
+				                case 2:
+				                    System.out.print("Digite a nova marca do produto: ");
+				                    String novaMarca = scanner.nextLine();
+				                    produtoExistente.setMarca(novaMarca);
+				                    break;
+				                case 3:
+				                    System.out.print("Digite o novo preço do produto: ");
+				                    double novoPreco = scanner.nextDouble();
+				                    produtoExistente.setPreco(novoPreco);
+				                    break;
+				                case 4:
+				                    System.out.print("Digite a nova quantidade do produto: ");
+				                    int novaQuantidade = scanner.nextInt();
+				                    produtoExistente.setQuantidade(novaQuantidade);
+				                    break;
+				                case 5:
+				                    System.out.print("Digite a nova categoria do produto: ");
+				                    String novaCategoria = scanner.nextLine();
+				                    produtoExistente.setCategoria(novaCategoria);
+				                    break;
+				                default:
+				                    System.out.println("Opção inválida para a alteração!");
+				                    break;
+				            }
+
+				            if (!sair) {
+				                System.out.println("Produto alterado com sucesso:");
+				                System.out.println(produtoExistente);
+				            }
+				        }
+				    } else {
+				        System.out.println("Produto não encontrado!");
+				    }
+				    break;
+			case 3:
+			    boolean sairConsulta = false;
+			    while (!sairConsulta) {
+			        System.out.println("1 - Consultar por nome");
+			        System.out.println("2 - Consultar por ID");
+			        System.out.println("0 - Sair");
+			        System.out.print("Escolha uma opção: ");
+			        int opcaoConsulta = scanner.nextInt();
+			        scanner.nextLine();
+
+			        switch (opcaoConsulta) {
+			            case 1:
+			                System.out.print("Digite o nome do produto a ser consultado: ");
+			                String nomeConsultar = scanner.nextLine();
+			                List<Produto> produtosEncontrados = loja.consultarProduto(nomeConsultar);
+			                if (!produtosEncontrados.isEmpty()) {
+			                    System.out.println("Produtos encontrados:");
+			                    for (Produto Produto : produtosEncontrados) {
+			                        System.out.println(Produto);
+			                    }
+			                } else {
+			                    System.out.println("Nenhum produto encontrado com o nome informado!");
+			                }
+			                break;
+			            case 2:
+			                System.out.print("Digite o ID do produto a ser consultado: ");
+			                int idConsultar = scanner.nextInt();
+			                scanner.nextLine();
+			                Produto produtoConsultadoPorId = loja.consultarProduto(idConsultar);
+			                if (produtoConsultadoPorId != null) {
+			                    System.out.println(produtoConsultadoPorId);
+			                } else {
+			                    System.out.println("Produto não encontrado!");
+			                }
+			                break;
+			            case 0:
+			                sairConsulta = true;
+			                break;
+			            default:
+			                System.out.println("Opção inválida para a consulta!");
+			                break;
+			        }
+			    }
+			    break;
 			case 4:  // Opção excluir produto.
-				System.out.print("Digite o ID do produto a ser excluÃ­do: ");
-				int IDExcluir = scanner.nextInt();
-				loja.excluirProduto(IDExcluir);
-				break;
+				 System.out.print("Digite o ID do produto a ser excluído: ");
+				    int IDExcluir = scanner.nextInt();
+				    scanner.nextLine();
+
+				    Produto produtoExcluir = loja.consultarProduto(IDExcluir);
+				    if (produtoExcluir != null) {
+				        System.out.println("Produto encontrado:");
+				        System.out.println(produtoExcluir);
+
+				        System.out.print("Deseja confirmar a exclusão do produto? (Sim/Não): ");
+				        String confirmacao = scanner.nextLine();
+
+				        if (confirmacao.equalsIgnoreCase("Sim")) {
+				            loja.excluirProduto(IDExcluir);
+				            System.out.println("Produto excluído com sucesso!");
+				        } else {
+				            System.out.println("Exclusão cancelada.");
+				        }
+				    } else {
+				        System.out.println("Produto não encontrado!");
+				    }
+				    break;
 			case 5: // Opção listar produto.
 				loja.listarProdutos();
 				break;
