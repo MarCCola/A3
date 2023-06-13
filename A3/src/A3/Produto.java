@@ -1,3 +1,7 @@
+
+// Raimundo Neto Monteiro Torres RA: 12723134897
+// Marcos Guilherme Silva da Cruz RA: 12723117417
+
 package A3;
 import java.util.Random;
 

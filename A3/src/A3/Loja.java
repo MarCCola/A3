@@ -1,3 +1,7 @@
+
+// Raimundo Neto Monteiro Torres RA: 12723134897
+// Marcos Guilherme Silva da Cruz RA: 12723117417
+
 package A3;
 
 import java.util.ArrayList;
@@ -22,7 +26,7 @@ public class Loja {
 			Produto produto = produtos.get(i);              
 			if (produto.getNome().equals(nome)) {    // Pecorrendo a lista para encontrar um
 				                                    //produto com nome igual ao solicitado e ap�s encontrar                           
-				produtos.set(i, novoProduto);      // o progama faz a altera��o, se n�o informa como produto n�o encontrado.
+				produtos.set(i, novoProduto);      // o progama faz a alterção, se não informa como produto não encontrado.
 				
 				System.out.println("Produto alterado com sucesso!");
 				return;
@@ -44,7 +48,7 @@ public class Loja {
 		public List <Produto> consultarProduto(String nomeConsultar) {
 	        List <Produto> produtosEncontrados = new ArrayList<>();
 	        for (Produto produto : produtos) {
-	            if (produto.getNome().equalsIgnoreCase(nomeConsultar)) {
+	            if (produto.getNome().contains(nomeConsultar)) {
 	                produtosEncontrados.add(produto);
 	            }
 	        }
@@ -52,11 +56,12 @@ public class Loja {
 	    }
 
 	public void excluirProduto(int id) {
+		
 		for (int i = 0; i < produtos.size(); i++) {
 			Produto produto = produtos.get(i); // Comando para pegar o index da ArrayList.
 			if (produto.getID() == id) {
 				produtos.remove(i);     // Comando para remover index do ArrayList.
-				System.out.println("Produto excluído com sucesso!");
+				
 				return;
 			}
 		}

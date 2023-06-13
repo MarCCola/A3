@@ -1,3 +1,6 @@
+
+// Raimundo Neto Monteiro Torres RA: 12723134897
+// Marcos Guilherme Silva da Cruz RA: 12723117417
 package A3;
 
 import java.util.List;
@@ -17,7 +20,7 @@ public class InterfaceLoja {
 			System.out.println("4 - Excluir produto");
 			System.out.println("5 - Listar produtos");
 			System.out.println("6 - Sair");
-			System.out.print("Escolha uma opÃ§Ã£o: ");
+			System.out.print("Escolha uma opção: ");
 			opcao = scanner.nextInt();
 			scanner.nextLine();
 
@@ -27,7 +30,7 @@ public class InterfaceLoja {
 				String nome = scanner.nextLine(); 
 				System.out.print("Digite a marca do produto: ");
 				String marca = scanner.nextLine();
-				System.out.print("Digite o preÃ§o do produto: ");
+				System.out.print("Digite o preço do produto: ");
 				double preco = scanner.nextDouble();
 				System.out.print("Digite a quantidade do produto: ");
 				int quantidade = scanner.nextInt();
@@ -178,7 +181,7 @@ public class InterfaceLoja {
 				System.out.println("Encerrando o programa...");
 				break;
 			default:
-				System.out.println("OpÃ§Ã£o invÃ¡lida!");
+				System.out.println("Opção invalida!");
 			}
 
 			System.out.println();
